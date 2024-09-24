@@ -54,7 +54,7 @@ module.exports = (env) => {
         stats: 'errors-warnings', //控制bundle打包信息的显示 （只在发生错误和警告时输出）
         mode: isEnvProduction ? 'production' : isEnvDevelopment && 'development',
         entry: {
-            cs: paths.appSrc + '\\ceshifuy.js',
+            // cs: paths.appSrc + '\\ceshifuy.js',
             main: paths.appIndexJs,
         },
         bail: isEnvProduction, //打包出错时退出打包过程
@@ -132,7 +132,6 @@ module.exports = (env) => {
                         },
                     },
                 }),
-
             ],
             splitChunks: {
                 chunks: 'all',//所有模块进行分割
@@ -173,7 +172,6 @@ module.exports = (env) => {
                 // 保存引入文件的模块的依赖文件，当引入模块更新时，只需更新当前依赖文件(runtime)即可，无需更新主文件
                 name: (entrypoint) => `runtime~${entrypoint.name}`  //entrypoint 入口文件
             }
-
         },
         //模块解析相关配置
         resolve: {
@@ -206,6 +204,10 @@ module.exports = (env) => {
                         {
                             test: [/\.s[ac]ss$/],
                             use: getStyleLoaders("sass-loader")
+                        },
+                        {
+                            test: [/\.less$/],
+                            use: getStyleLoaders("less-loader")
                         },
                         {
                             test: [/\.avif$/],
@@ -253,7 +255,7 @@ module.exports = (env) => {
                             ]
                         },
                         {
-                            test: [/\.jsx?$/],
+                            test: [/\.(tsx?|js)$/],
                             // babel- loader：转换js代码
                             include: paths.appSrc,
                             loader: require.resolve('babel-loader'),
@@ -267,7 +269,12 @@ module.exports = (env) => {
                                 ].filter(Boolean)
                             },
 
-                        }
+                        },
+                        // {
+                        //     test: /\.tsx?$/,
+                        //     use: 'ts-loader',
+                        //     exclude: /node_modules/,
+                        // }
                     ]
                 }
             ]

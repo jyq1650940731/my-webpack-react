@@ -1,3 +1,12 @@
+/*
+ * @Author: YourName
+ * @Date: 2024-09-24 15:59:01
+ * @LastEditTime: 2024-09-24 18:24:17
+ * @LastEditors: YourName
+ * @Description: 
+ * @FilePath: \webpack\my-webpack\src\App.tsx
+ * 版权声明
+ */
 import React, { Suspense, lazy } from "react";
 import { Link, Routes, Route } from "react-router-dom";
 import { ConfigProvider } from "antd";
@@ -12,7 +21,7 @@ const Home = lazy(() =>
 
 function App() {
   return (
-    <ConfigProvider locale="zhCN">
+    <ConfigProvider locale={zhCN}>
       <div className="App">
         <ul>
           <li>
