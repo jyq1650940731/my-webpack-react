@@ -1,12 +1,18 @@
+import React from 'react';
+import ReactDom from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
+import {reduce} from './fuyon';
+import './assets/styles/index.css';
+import './assets/styles/cs.scss';
+import App from './App';
+
 const btn = document.createElement("button");
-btn.innerHTML = "测试按钮";
-document.body.appendChild(btn);
-console.log(123);
-async function getAsyncComponent() { 
-    await import('./ceshi.js');
-}
+const root = ReactDom.createRoot(document.getElementById('root'));
 
+console.log(reduce(1, 20));
+root.render(
+    <BrowserRouter>
+        <App></App>
+    </BrowserRouter>
+)
 
-btn.addEventListener('click',()=>{
-    getAsyncComponent();
-})

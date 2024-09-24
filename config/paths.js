@@ -25,7 +25,6 @@ const publicUrlOrPath = getPublicUrlOrPath(
     //默认为：/
 );
 
-
 //生产路径
 const buildPath = process.env.BUILD_PATH || 'build';
 console.log(buildPath);
@@ -44,7 +43,6 @@ const moduleFileExtensions = [
     'jsx',
 ];
 
-
 //解析模块
 const resolveModule = (resolveFn, filePath) => {
     const extension = moduleFileExtensions.find(extension =>
@@ -62,8 +60,8 @@ module.exports = {
     dotenv: resolveApp('.env'),
     appPath: resolveApp('.'),
     appBuild: resolveApp(buildPath),
-    appPublic: resolveApp('public'),
-    appHtml: resolveApp('public/index.html'),
+    appPublic: resolveApp('dist'),
+    appHtml: resolveApp('dist/index.html'),
     appIndexJs: resolveModule(resolveApp, 'src/index'),
     appPackageJson: resolveApp('package.json'),
     appSrc: resolveApp('src'),
@@ -75,6 +73,9 @@ module.exports = {
     appNodeModules: resolveApp('node_modules'),
     appWebpackCache: resolveApp('node_modules/.cache'),
     appTsBuildInfoFile: resolveApp('node_modules/.cache/tsconfig.tsbuildinfo'),
+    appEslintCache: resolveApp('node_modules/.cache/.eslintcache'),
     swSrc: resolveModule(resolveApp, 'src/service-worker'),
     publicUrlOrPath,
   };
+
+  module.exports.moduleFileExtensions = moduleFileExtensions;
