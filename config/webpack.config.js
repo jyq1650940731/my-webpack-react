@@ -136,7 +136,7 @@ module.exports = (env) => {
             splitChunks: {
                 chunks: 'all',//所有模块进行分割
                 //默认值
-                minSize: 0, // >20kb时分割打包
+                //minSize: 0, // >20kb时分割打包
                 // minRemainingSize: 0,
                 // minChunks: 1,
                 // maxAsyncRequests: 30,
@@ -268,13 +268,7 @@ module.exports = (env) => {
                                     isEnvDevelopment && shouldUseReactRefresh && require.resolve('react-refresh/babel') //激活js的HMR
                                 ].filter(Boolean)
                             },
-
                         },
-                        // {
-                        //     test: /\.tsx?$/,
-                        //     use: 'ts-loader',
-                        //     exclude: /node_modules/,
-                        // }
                     ]
                 }
             ]
